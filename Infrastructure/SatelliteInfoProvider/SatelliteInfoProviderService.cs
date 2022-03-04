@@ -36,8 +36,13 @@ namespace Infrastructure.SatelliteInfoProvider
                 if(sateliteCoordinates==null || DateTime.UtcNow > nextTrendyRequestCacheUpdate)
                 {
                     Monitor.TryEnter(lockObj, timeout, ref lockTaken);
-                    sateliteCoordinates = FetchApiCallData().Result;
-                    nextTrendyRequestCacheUpdate = DateTime.UtcNow.AddSeconds(CachWaitTimeRequest);
+
+                    if (sateliteCoordinates == null || DateTime.UtcNow > nextTrendyRequestCacheUpdate)
+                    {
+                        sateliteCoordinates = FetchApiCallData().Result;
+                        nextTrendyRequestCacheUpdate = DateTime.UtcNow.AddSeconds(CachWaitTimeRequest);
+                    }
+                        
                 } 
             }
             catch (Exception ex)
