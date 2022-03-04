@@ -1,8 +1,12 @@
+using Infrastructure.Repositories.NoteRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<INoteRepository, NoteRepository>();
 
 var app = builder.Build();
 
