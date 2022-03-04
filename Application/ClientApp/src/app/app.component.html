@@ -1,6 +1,19 @@
-<body>
-  <app-nav-menu></app-nav-menu>
+<body> 
   <div class="container">
-    <router-outlet></router-outlet>
+
+    <div *ngIf="satelliteCoordinates">
+      <table>
+        <tr>
+          <td>Latitude</td>
+          <td>{{  satelliteCoordinates.iss_position.latitude }} </td>
+        </tr>
+        <tr>
+          <td>Longitude</td>
+          <td>{{ satelliteCoordinates.iss_position.longitude }}</td>
+        </tr> 
+      </table>
+     </div> 
+
+  
   </div>
-</body>
+</body> 

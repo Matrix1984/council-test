@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var MyAllowSpecificOrigins = "AllowCors";
+
 builder.Services.AddHttpClient("Satellite", client =>
 {
 
@@ -16,6 +18,22 @@ builder.Services.AddHttpClient("Satellite", client =>
     TimeSpan.FromSeconds(5),
     TimeSpan.FromSeconds(10)
 }));
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+            "AllowCors",
+            builder =>
+            {
+                builder.AllowAnyOrigin().WithMethods(
+                    HttpMethod.Get.Method,
+                    HttpMethod.Put.Method,
+                    HttpMethod.Post.Method,
+                    HttpMethod.Delete.Method).AllowAnyHeader().WithExposedHeaders("CustomHeader");
+            });
+});
+
+ 
 
 builder.Services.AddSwaggerGen();
 
@@ -42,10 +60,12 @@ else
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllerRoute(
     name: "default",
