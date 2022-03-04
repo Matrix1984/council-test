@@ -11,6 +11,6 @@ namespace Infrastructure.Repositories.NoteRepository
     {
         NoteDTO AddNote(NoteDTO createNoteDTO);
 
-        List<NoteDTO> ListNotes(string userIP);
+        dynamic ListNotes(string userIP);
     }
 }

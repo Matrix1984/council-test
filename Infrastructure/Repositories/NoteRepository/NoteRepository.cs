@@ -11,17 +11,22 @@ namespace Infrastructure.Repositories.NoteRepository
     {
         private List<NoteDTO> notes = new List< NoteDTO>();
         public NoteDTO AddNote(NoteDTO createNoteDTO)
-        {
-      
-
+        { 
             notes.Add(createNoteDTO);
 
             return createNoteDTO;
         }
 
-        public List<NoteDTO> ListNotes(string userIP)
+        public dynamic ListNotes(string userIP)
         {
-            return notes.Where(x=>x.UserIP== userIP).ToList();
+            return (from n in notes
+                   where n.UserIP == userIP
+                   select new
+                   {
+                       noteId= n.NoteId,
+                       latitude= n.Longitude,
+                       longitude= n.Latitude
+                   }).ToList();
         }
     }
 }
