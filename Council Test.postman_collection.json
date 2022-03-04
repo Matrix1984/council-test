@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "2d2b3378-2425-4841-a715-14c3ef999532",
+		"name": "Council Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Satelite",
+			"item": [
+				{
+					"name": "Satelite",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7159/api/SateliteCoordinates",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7159",
+							"path": [
+								"api",
+								"SateliteCoordinates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Note",
+			"item": [
+				{
+					"name": "Save Note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n        \"iss_position\": {\r\n            \"latitude\": \"50.9639\",\r\n            \"longitude\": \"-50.8315\"\r\n        },\r\n        \"timestamp\": 1646376600,\r\n        \"message\": \"success\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7159/api/Notes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7159",
+							"path": [
+								"api",
+								"Notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListNotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7159/api/Notes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7159",
+							"path": [
+								"api",
+								"Notes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

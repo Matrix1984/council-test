@@ -1,27 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.SatelliteInfoProvider;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class SateliteCoordinatesController : ControllerBase
-{ 
-    private readonly ILogger<SateliteCoordinatesController> _logger;
-
-    public SateliteCoordinatesController(ILogger<SateliteCoordinatesController> logger)
+{
+    private readonly ISatelliteInfoProviderService satelliteInfoProviderService;
+    public SateliteCoordinatesController(ISatelliteInfoProviderService satelliteSerivce)
     {
-        _logger = logger;
+        satelliteInfoProviderService = satelliteSerivce;
     }
 
-    //[HttpGet]
-    //public IEnumerable<WeatherForecast> Get()
-    //{
-    //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-    //    {
-    //        Date = DateTime.Now.AddDays(index),
-    //        TemperatureC = Random.Shared.Next(-20, 55),
-    //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-    //    })
-    //    .ToArray();
-    //}
+    [HttpGet]
+    public IActionResult Get()
+     => Ok(satelliteInfoProviderService.GetSatelliteInfo());
 }
