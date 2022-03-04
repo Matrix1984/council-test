@@ -26,6 +26,7 @@ namespace Application.Controllers
             NoteDTO noteDTO = new();
             noteDTO.Latitude = createNoteDTO.Latitude; ;
             noteDTO.Longitude = createNoteDTO.Longitude;
+            noteDTO.Note = createNoteDTO.Note;
             noteDTO.NoteId = Guid.NewGuid().ToString();
             noteDTO.UserIP = httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString(); 
             return Ok(this.noteRepository.AddNote(noteDTO));

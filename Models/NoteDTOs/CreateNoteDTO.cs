@@ -10,5 +10,7 @@ namespace Models.NoteDTOs
     {
         public string Latitude { get; set; }
         public string Longitude { get; set; }
+
+        public string Note { get; set; }
     }
 }

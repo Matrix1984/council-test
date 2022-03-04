@@ -1,6 +1,6 @@
 <body>
-  <div class="container"> 
-    <section *ngIf="satelliteCoordinates">
+  <div class="container"  *ngIf="satelliteCoordinates"> 
+    <section  >
       <h2>Satellite coordinates</h2>
       <table>
         <tr>
@@ -14,16 +14,24 @@
       </table>
     </section>
 
-    <section>
+    <section  >
       <h2>Save Coordinates and add note</h2>
-      <form>
-
+      <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Take note</mat-label>
+            <input matInput formControlName="note" placeholder="Placeholder"> 
+          </mat-form-field>
+        </p> 
+        <p>
+          <button mat-button type="submit" color="primary">Add Note</button>
+        </p> 
       </form>
     </section> 
 
     <section *ngIf="initialDataLoaded">
       <h2>List of coordinates</h2>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table #noteTable mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- NoteId Column -->
         <ng-container matColumnDef="NoteId">
           <th mat-header-cell *matHeaderCellDef> Note Id. </th>

@@ -24,8 +24,8 @@ namespace Infrastructure.Repositories.NoteRepository
                    select new
                    {
                        noteId= n.NoteId,
-                       latitude= n.Longitude,
-                       longitude= n.Latitude
+                       latitude= n.Latitude,
+                       longitude= n.Longitude,
                    }).ToList();
         }
     }
