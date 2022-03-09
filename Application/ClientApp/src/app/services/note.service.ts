@@ -14,7 +14,7 @@ export class NoteService {
 
   public saveNote(body:any): Observable<Note> {
       const url = 'https://localhost:7159/api/Notes';
-      return this.http.post<Note>(url,body);
+      return this.http.post<Note>(url,body); 
   }
 
   public listNotes(): Observable<Note[]> {

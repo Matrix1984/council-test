@@ -24,7 +24,7 @@ namespace Application.Controllers
         public IActionResult SaveNote(CreateNoteDTO createNoteDTO)
         {
             NoteDTO noteDTO = new();
-            noteDTO.Latitude = createNoteDTO.Latitude; ;
+            noteDTO.Latitude = createNoteDTO.Latitude;
             noteDTO.Longitude = createNoteDTO.Longitude;
             noteDTO.Note = createNoteDTO.Note;
             noteDTO.NoteId = Guid.NewGuid().ToString();
@@ -40,7 +40,7 @@ namespace Application.Controllers
 
             if (ip == null)
                 return BadRequest();
-
+            
             return Ok(this.noteRepository.ListNotes(ip));
         }
     }

@@ -33,7 +33,7 @@ namespace Infrastructure.SatelliteInfoProvider
         {  
             try
             {
-                if(sateliteCoordinates==null || DateTime.UtcNow > nextTrendyRequestCacheUpdate)
+                if(sateliteCoordinates == null || DateTime.UtcNow > nextTrendyRequestCacheUpdate)
                 {
                     Monitor.TryEnter(lockObj, timeout, ref lockTaken);
 
@@ -80,9 +80,8 @@ namespace Infrastructure.SatelliteInfoProvider
             {
                 throw new Exception("Unsuccessful data fetch attempt");
             }
-
-            if (sateliteRes == null )
-                throw new Exception("Unsuccessful data fetch attempt");
+              
+            ArgumentNullException.ThrowIfNull(sateliteRes);
 
             return sateliteRes;
         }
